@@ -20,12 +20,12 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
 
-@app.route('/')
-def home():
-    """Page d'accueil avec bouton de démarrage."""
-    session.clear()
-    return render_template('index.html')
-
+'''@app.route('/')
+#def home():
+#    """Page d'accueil avec bouton de démarrage."""
+#    session.clear()
+#    return render_template('index.html')
+'''
 @app.route('/play', methods=['GET', 'POST'])
 def play():
     """Affiche un calcul et vérifie les réponses."""
