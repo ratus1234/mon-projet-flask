@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcul Mental</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin-top: 50px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        #timer {
+            font-size: 20px;
+            color: red;
+            font-weight: bold;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        let timeLeft = 5;
+        function countdown() {
+            document.getElementById("timer").textContent = timeLeft;
+            if (timeLeft === 0) {
+                document.getElementById("form").submit();
+            } else {
+                timeLeft--;
+                setTimeout(countdown, 1000);
+            }
+        }
+        window.onload = countdown;
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Calcul Mental</h1>
+        <p>Temps restant : <span id="timer">5</span> secondes</p>
+        <form id="form" method="POST">
+            <p style="font-size: 24px;">{{ question }} = ?</p>
+            <input type="text" name="answer" autofocus required>
+            <input type="hidden" name="correct" value="{{ correct }}">
+            <button type="submit">Valider</button>
+        </form>
+    </div>
+</body>
+</html>
+
